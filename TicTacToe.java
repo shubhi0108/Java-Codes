@@ -23,24 +23,30 @@ public class TicTacToe {
         
         int r,c,count=0,u=1;
         
+        //game turns are 9
         while(count<=9)
         {
+        	//if all the tiles are full finish the game
             if(count==9)
                 
                 break;
             
+            //print to show which player's turn
             RefPos(u);
             
             r=in.nextInt();
             
             c=in.nextInt();
             
+            //if filled position entered then re-enter the position
             if(m[r][c]!=' ')
                 
                 continue;
             
             count++;
-            
+            //0 for player 1
+            //x for player 2
+            //after each player plays u turns from player 1 to player 2 or vice-versa
             if(u==1)
             {
                 m[r][c]='0';
@@ -53,10 +59,13 @@ public class TicTacToe {
                 
                 u=1;Printm(m);
             }
+            //after 5 turns there is a possibility for one of the players to win the game
             if(count>=5)
             {
+            	//to check if any winning combinations made
               flag=Check(m);
               
+              //flag = 0 means no winning combination
               if(flag>0)
               {
                   if(u==1)
@@ -71,9 +80,12 @@ public class TicTacToe {
         }
         System.out.println("\nMatch Drawn - Tie!!");
     }
+    //to check for any winning combination
     public static int Check(char[][] m)
     {   
-        
+        //to check horizontally and vertically 
+    	//if horizontally return 1
+    	//if vertically return 2
         for(int i=0;i<3;i++)
         {
             if((m[i][0]==m[i][1])&&(m[i][0]==m[i][2])&&(m[i][1]==m[i][2])&&(m[i][0]==m[i][2])&&m[i][0]!=' ')
@@ -84,15 +96,19 @@ public class TicTacToe {
                 
                 return 2;
         }
+        //to check diagonally from left to right
           if((m[0][0]==m[1][1])&&(m[0][0]==m[2][2])&&(m[1][1]==m[2][2])&&(m[0][0]==m[2][2])&&m[0][0]!=' ')
               
                 return 3;
           
+        //to check diagonally from right to left  
         if((m[2][0]==m[1][1])&&(m[2][0]==m[0][2])&&(m[1][1]==m[0][2])&&(m[2][0]==m[1][1])&&m[2][0]!=' ')
             
                 return 4;
+        //if no winning combination return 0
         return 0;
     }
+    //function to print the tic tac toe board with the player's turns
     public static void Printm(char[][] m)
     {
         System.out.println("\n\n\n\n\n");
@@ -115,6 +131,7 @@ public class TicTacToe {
                 System.out.println("\n\t\t\t__|___|___");
         }
     }
+    //default values(empty) to all the positions of the board
     public static void Setm(char[][] m)
     {
         for(int i=0;i<3;++i)
@@ -125,6 +142,7 @@ public class TicTacToe {
             }
         }
     }
+    //function for reference positions and to tell which player's turn
     public static void RefPos(int u)
     {
         //System.out.println("\nReference Position:\n");
