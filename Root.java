@@ -1,8 +1,11 @@
+/* This program is to find value of root node in a tree 
+when value of each node and sum of child nodes of all nodes is given. */
+
 package javacodes;
 
-import java.util.*;
+import java.util.*;     //import packages
 
-public class Root{
+public class Root{       
     
     public static void main(String[] args)
     {
@@ -10,7 +13,7 @@ public class Root{
         
         System.out.println("Number of vertices in tree");
         
-        int v=in.nextInt();
+        int v=in.nextInt();     //taking number of vertices as input
         
         int sumt=0,sumc=0,tmp;
         
@@ -18,7 +21,7 @@ public class Root{
         
         for(int i=1;i<=v;i++)
         {
-            tmp=in.nextInt();
+            tmp=in.nextInt();       //taking values of each node as input
             
             sumt+=tmp;
         }
