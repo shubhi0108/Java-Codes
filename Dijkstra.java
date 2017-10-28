@@ -1,11 +1,15 @@
 package javacodes;
 
 import java.util.*;
- 
+
+//this program uses dijsktra's algorithm to find single source shortest path.
+//it also uses adjacency matrix for graph representation.
+
 public class Dijkstra {
     
     static int V;
     
+    //function to find vertex with the shortest path.
     int minDistance(int dist[], Boolean que[])
     {
         
@@ -23,7 +27,7 @@ public class Dijkstra {
         return index;
     }
  
-    
+    //function to print all the node with there minimum distance from the source
     void printSolution(int dist[], int n)
     {
         System.out.println("Vertex   Distance from Source");
@@ -33,14 +37,16 @@ public class Dijkstra {
             System.out.println(i+" \t\t "+dist[i]);
     }
  
-  
+    //function to implement dijkstra algorithm 
     void dijkstra(int graph[][], int src)
     {
+    	//shortest distance for each node from the source node(src)
         int dist[] = new int[V]; 
         
+        //all the nodes with minimun distance from the source
         Boolean que[] = new Boolean[V];
  
-       
+       // Give infinite value to all nodes
         for (int i = 0; i < V; i++)
         {
             dist[i] = Integer.MAX_VALUE;
@@ -48,22 +54,30 @@ public class Dijkstra {
             que[i] = false;
         }
  
-       
+       //distance of source node is always 0
         dist[src] = 0;
  
        
         for (int count = 0; count < V-1; count++)
         {
-           
+            //find minimum distance node from the source
+        	//u=src in the first iteration
             int u = minDistance(dist, que);
  
-            
+            //mark u to have found the shortest distance from the source
             que[u] = true;
  
            
             for (int i = 0; i < V; i++)
  
-                
+                /*update the value of i if and only if 
+                 * the node i is not added in the MST 
+                 * and there exists a path from u to v
+                 * and the distance of u from the source node is not Infinite
+                 * and distance of i from the source node is less than 
+                 * the distance of u and current value of i from u
+                 */
+            	 
                 if (!que[i] && graph[u][i]!=0 &&
                         
                         dist[u] != Integer.MAX_VALUE &&
@@ -74,7 +88,7 @@ public class Dijkstra {
             
         }
  
-      
+        //print the minimum distance for each node from the source
         printSolution(dist, V);
     }
  
