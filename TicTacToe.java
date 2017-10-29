@@ -1,7 +1,7 @@
 package javacodes;
 
 import java.util.Scanner;
-
+/** class TicTacToe takes in user input and prints the game to the screen*/
 public class TicTacToe {
     
     public static void main(String args[])
@@ -11,24 +11,21 @@ public class TicTacToe {
         Scanner in=new Scanner(System.in);
         
         System.out.println("Enter name\nPlayer 1 :");
-        
+        // get name1
         String name1=in.nextLine();
         
         System.out.println("Player 2 :");
-        
+        // get name2
         String name2=in.nextLine();
-        
+        // 2D array of 3 elements each
         char[][] m=new char[3][3];Setm(m);
         
         
         int r,c,count=0,u=1;
         
-        while(count<=9)
-        {
-            if(count==9)
-                
-                break;
-            
+        // 9 moves in TicTacToe game
+        while(count<9)
+        {            
             RefPos(u);
             
             r=in.nextInt();
