@@ -7,7 +7,7 @@ public class DigitalMax {
     public static void main(String[] agrs)
     {
         Scanner in=new Scanner(System.in);
-        
+        //User will enter a number
         System.out.println("Enter a number :");
         
         int n=in.nextInt();
